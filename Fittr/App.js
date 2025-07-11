@@ -1,17 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from './src/screens/LoginScreen';
+import HomeScreen from './src/screens/HomeScreen';
+
+const Stack = createStackNavigator();
+
 export default function App() {
-  console.log("App executed");
-
   return (
-    <SafeAreaView style={styles.testing}>
-
-      <Text style={styles.mainText}>Please log in or sign up</Text>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
+
 
 const styles = StyleSheet.create({
   testing: {
@@ -27,5 +35,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     alignItems: 'flex-start',
+  },
+
+  ButtonContainer: {
+
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#102542',
   }
 });
