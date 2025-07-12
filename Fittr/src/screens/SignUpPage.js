@@ -14,6 +14,7 @@ export default function SignUpPage() {
     <View style={styles.TopContainer}>
         <Text style={styles.TopText}>Sign Up</Text>
     </View>
+    
   );
 }
 

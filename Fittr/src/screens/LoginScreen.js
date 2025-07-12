@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import api from '../api/api'; 
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleLogin = () => {
-    if (email === '1' && password === '2') {
+  const handleLogin = async () => {
+  try {
+    const response = await api.post('/auth/login', { email, password });
+    console.log(response.data);  // log backend response
+    if (response.data.message === 'Login successful') {
       setError('');
-      navigation.navigate('Home'); 
+      navigation.navigate('Home');
     } else {
       setError('Invalid credentials');
     }
-  };
+  } catch (error) {
+    console.error(error);
+    setError('Something went wrong');
+  }
+};
 
   return (
     <View style={styles.container}>
