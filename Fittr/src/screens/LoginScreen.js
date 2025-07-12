@@ -35,6 +35,7 @@ export default function LoginScreen({ navigation }) {
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <Button title="Login" onPress={handleLogin} style={styles.button} />
       <Button title="Forgot Password?" onPress={() => navigation.navigate('ForgotPassword')} />
+      <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
     </View>
   );
 }
